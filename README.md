@@ -4,7 +4,7 @@
 
 |Culumn|Type|Options|
 |------|----|-------|
-|name|string|null: false, add_index|
+|name|string|null: false, index: true|
 |email|string|null: false|
 |password|string|nill:false|
 
@@ -18,7 +18,7 @@
 
 |Culumn|Type|Options|
 |------|----|-------|
-|group|string|null: false, foreign_key: true, add_index|
+|name|string|null: false, index: true|
 
 ### Association
 - has_many :messages
@@ -30,34 +30,23 @@
 
 |Culumn|Type|Options|
 |------|----|-------|
-|text|text|null: false, foreign_key: true|
-|image|string|foreign_key: true|
+|text|text||
+|image|string||
+|user|references|null: false, foreign_key: true|
+|group|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
-- has_many :groups_messages
-- has_many :groups, through: :groups_messages
+- belongs_to :group
 
 
 ## users_groupsテーブル
 
 |Culumn|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false, foreign_key: true|
-|group_id|integer|null: false, foreign_key: true|
+|user|references|null: false, foreign_key: true|
+|group|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
 - belongs_to :group
-
-
-## groups_messagesテーブル
-
-|Culumn|Type|Options|
-|------|----|-------|
-|group_message_id|integer|null: false, foreign_key: true|
-|message_id|integer|null: false, foreign_key: true
-
-### Association
-- belongs_to :group
-- belongs_to :message
