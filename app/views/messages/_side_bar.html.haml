@@ -3,19 +3,14 @@
     .side__header--user-name
       = current_user.name
     .side__header--icon<>
-      = link_to "#", class: "icon" do
+      = link_to new_group_path, class: "icon" do
         = icon('fas', 'edit')
       = link_to edit_user_path(current_user), class: "icon" do
         = icon('fas', 'cog')
   .side__list
-    %ul
-      %li
-      .side__list--group-name
-        techcamp
+    - current_user.groups.each do |group|
+      =link_to '#' do
+        .side__list--group-name
+          = group.name
       .side__list--massege
-        まだメッセージはありません
-      %li
-      .side__list--group-name
-        techcamp
-      .side__list--massege
-        まだメッセージはありません
+        メッセージはまだありません
