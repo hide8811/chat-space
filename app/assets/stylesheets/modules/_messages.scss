@@ -43,6 +43,7 @@
 
       &--group-name {
         @include font(15px, #fff);
+        text-decoration: none;
         margin-bottom: 5px;
       }
       &--massege {
@@ -95,7 +96,7 @@
       height: calc(100% - 100px - 90px);
       background-color: #fafafa;
     }
-      .massege {
+      .message {
         padding: 35px 40px;
 
         &__header {
@@ -130,7 +131,6 @@
           background-color: #fff;
           margin-left: 50px;
           display: flex;
-          line-height: 50px;
           position: relative;
   
           &--text {
@@ -146,9 +146,9 @@
             margin-right: 10px;
             position: absolute;
             right: 10px;
-  
+            line-height: 50px;
           }
-          &--image-text {
+          .image-file {
             display: none;
           }
         }
