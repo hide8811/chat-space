@@ -2,38 +2,24 @@
   .main__header
     .main__header--group
       .group-name
-        test
+        = @group.name
       .member-name
-        Member: masa
+        Member：
+        - @group.users.each do |user|
+          = user.name
 
     .main__header--group-Edit
-      = link_to "Edit", "#", class: "edit-btn"
+      = link_to "Edit", edit_group_path(@group), class: "edit-btn"
 
   .main__area
-    %ul.massege
-      %li
-        .massege__header
-          .massege__header--user-name
-            name
-          .massege__header--date
-            date
-        .massege__text
-          text
-      %li
-        .massege__header
-          .massege__header--user-name
-            name
-          .massege__header--date
-            date
-        .massege__text
-          text
+    = render @messages
 
   .main__footer
-    
-    %form.input
-      .input__form{tabIndex: "0"}
-        %input{type: "text", placeholder: "type a massege", class: "input__form--text"}
-        %label{class: "input__form--image"}<>
-          = icon('far', 'image')
-          %input{type: "file", class: "input__form--image-text"}
-      %input{type: "submit",value: "Send", class: "input__btn"}
+    = form_for [@group, @message] do |f|
+      .input
+        .input__form
+          = f.text_field :text, class: 'input__form--text', placeholder: 'type a message'
+          = f.label :image do
+            = icon('far', 'image', class: 'input__form--image')
+            = f.file_field :image, class: 'image-file'
+        = f.submit "Send", class: "input__btn"

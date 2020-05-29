@@ -9,8 +9,7 @@
         = icon('fas', 'cog')
   .side__list
     - current_user.groups.each do |group|
-      =link_to '#' do
-        .side__list--group-name
-          = group.name
+      =link_to group_messages_path(group), class: "side__list--group-name" do
+        = group.name
       .side__list--massege
-        メッセージはまだありません
+        = group.show_last_message
