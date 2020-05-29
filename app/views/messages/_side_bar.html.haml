@@ -12,4 +12,4 @@
       =link_to group_messages_path(group), class: "side__list--group-name" do
         = group.name
       .side__list--massege
-        メッセージはまだありません
+        = group.show_last_message
