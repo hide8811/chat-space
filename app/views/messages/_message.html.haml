@@ -3,7 +3,7 @@
     .message__header--user-name
       = message.user.name
     .message__header--date
-      = message.updated_at.strftime("%Y年%m月％d日 %H時%M分")
+      = message.updated_at.strftime("%Y年%m月%d日 %H時%M分")
   .message__text
     - if message.text.present?
       = message.text

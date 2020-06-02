@@ -56,11 +56,14 @@
   .main {
     height: 100vh;
     width: calc(100vw - 300px);
+    
 
     &__header {
       height: 100px;
+      width: calc(100vw - 300px);
       background-color: #fff;
       border-bottom: 1px solid #eee;
+      position: fixed;
       display: flex;
       justify-content: space-between;
 
@@ -95,9 +98,13 @@
     &__area {
       height: calc(100% - 100px - 90px);
       background-color: #fafafa;
-    }
+      margin-top: 100px;
+      margin-bottom: 90px;
+      overflow: scroll;
+
       .message {
         padding: 35px 40px;
+        background-color: #fafafa;
 
         &__header {
           margin-bottom: 12px;
@@ -116,9 +123,14 @@
           margin-bottom: 46px;
         }
       }
+    }
+
     &__footer {
       height: 90px;
+      width: calc(100vw - 300px);
       background-color: #d2d2d2;
+      position: fixed;
+      bottom: 0;
       display: flex;
       align-items: center;
 
