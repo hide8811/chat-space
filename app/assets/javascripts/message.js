@@ -69,11 +69,14 @@ $(function(){
       dataType: 'json'
     })
     .done(function(messages) {
-      var insertHTML = '';
-      $.each(messages, function(i, message) {
-        insertHTML += buildHTML(message)
-      });
-      $('.messages').append(insertHTML);
+      if (messages.length !== 0) {
+        var insertHTML = '';
+        $.each(messages, function(i, message) {
+          insertHTML += buildHTML(message)
+        });
+        $('.messages').append(insertHTML);
+        $('.messages').animate({ scrollTop: $('.messages')[0].scrollHeight});
+      }
     })
     .fail(function() {
       alert('error');
