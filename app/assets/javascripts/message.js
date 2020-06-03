@@ -64,23 +64,26 @@ $(function(){
     var last_message_id = $('.message:last').data("message-id");
     $.ajax({
       url: "api/messages",
-      type: 'GET',
+      type: 'get',
       data: {id: last_message_id},
       dataType: 'json'
     })
     .done(function(messages) {
+      console.log(messages)
       if (messages.length !== 0) {
         var insertHTML = '';
         $.each(messages, function(i, message) {
           insertHTML += buildHTML(message)
         });
-        $('.messages').append(insertHTML);
-        $('.messages').animate({ scrollTop: $('.messages')[0].scrollHeight});
+        $('.main__area').append(insertHTML);
+        $('.main__area').animate({ scrollTop: $('.main__area')[0].scrollHeight});
       }
     })
     .fail(function() {
       alert('error');
     });
   };
-  setInterval(reloadMessages, 7000)
+  if (document.location.href.match(/\/groups\/\d+\/messages/)) {
+    setInterval(reloadMessages, 7000);
+  }
 });
